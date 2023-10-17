@@ -1,22 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * rot13 - moves letters 13 places in alphabet
- * @c: Character to move
- * Return: returns the moved character
-*/
-char rot13(char c)
-{
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' || c <= 'z'))
-	{
-		char base = (c >= 'a' && c <= 'z') ? 'a' : 'A';
-		return (c - base + 13) % 26 + base;
-	}
-
-	return c;
-}
-
-/**
  * _printf - prints number of characters
  * @format: the formatted string
  * Return: returns the number of characters printed
@@ -24,7 +8,7 @@ char rot13(char c)
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	char *str, rotated;
+	char *str;
 	va_list args;
 
 	va_start(args, format);
@@ -44,18 +28,6 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					count += _putchar('%');
-					break;
-				case 'R':
-					str = va_arg(args, char *);
-					if (!str)
-						str = "(null)";
-					while (*str)
-						rotated = rot13(*str);
-					count += _putchar(rotated);
-					str++;
-					break;
-				case 'b':
-					count += print_binary(va_arg(args, unsigned int));
 					break;
 				case 'd':
 				case 'i':
