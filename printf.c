@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stddef.h>
 #include <stdarg.h>
 /**
  * _printf - prints number of characters
@@ -13,9 +12,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	if (!format)
 		return (-1);
 	while (*format)
 	{
@@ -32,21 +29,17 @@ int _printf(const char *format, ...)
 					break;
 				case 'd':
 				case 'i':
-				{
-					int num = va_arg(args, int);
-					count += print_num(num);
-				}
+					count += print_num(va_arg(args, int));
 					break;
 				case 's':
 					str = va_arg(args, char *);
-					if (str == NULL)
+					if (!str)
 						str = "(null)";
 					while (*str)
 						count += _putchar(*str++);
 					break;
 				default:
 					count += _putchar('%') + _putchar(*format);
-					break;
 			}
 		}
 		else
