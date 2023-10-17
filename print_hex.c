@@ -1,34 +1,31 @@
 #include "main.h"
 /**
  * print_hex - prints unsigned int in hexadecimal form
- * with small letters
  * @n: unsigned int to be converted
  * Return: return number of characters to be printed
  */
-int print_hex(unsigned int n)
+int print_hex(unsigned int n, int uppercase)
 {
-	unsigned int rem;
-	int i = 0, count = 0;
-	char hex[11];
+	char hex_buffer[25];
+	int count = 0, i;
+	char hex_digs[] = "0123456789ABCDEF";
+	if (!uppercase)
+	{
+		for (i = 10; i < 16; i++)
+			hex_digs[i] = 'a' + (i - 10);
+	}
 
 	if (n == 0)
-	{
 		_putchar('0');
-		return (1);
-	}
 
-	while (n > 0)
+	while (n)
 	{
-		rem = n % 16;
-		hex[i] = (rem < 10) ? rem + '0' : 'a' + (rem - 10);
+		hex_buffer[count] =  hex_digs[n % 16];
 		n /= 16;
-		i++;
-	}
-
-	for (i--; i >= 0; i--)
-	{
-		_putchar(hex[i]);
 		count++;
 	}
+
+	for (count--; count >= 0; count--)
+		_putchar(hex_buffer[count]);
 	return (count);
 }

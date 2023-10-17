@@ -23,10 +23,8 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					count += _putchar(va_arg(args, int));
-					break;
 				case '%':
-					count += _putchar('%');
+					count += (*format == '%') ?  _putchar('%') : _putchar(va_arg(args, int));
 					break;
 				case 'u':
 					count += print_unsigned_int(va_arg(args, unsigned int));
@@ -38,10 +36,8 @@ int _printf(const char *format, ...)
 					count += print_binary(va_arg(args, unsigned int));
 					break;
 				case 'x':
-					count += print_hex(va_arg(args, unsigned int));
-					break;
 				case 'X':
-					count += print_HEX(va_arg(args, unsigned int));
+					count += print_hex(va_arg(args, unsigned int), (*format == 'X'));
 					break;
 				case 'd':
 				case 'i':
