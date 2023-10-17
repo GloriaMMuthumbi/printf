@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int count = 0, num;
+	int count = 0;
 	char *str;
 	va_list args;
 
