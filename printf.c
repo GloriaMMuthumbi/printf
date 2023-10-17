@@ -4,7 +4,6 @@
 /**
  * _printf - prints number of characters
  * @format: the formatted string
- *
  * Return: returns the number of characters printed
  */
 int _printf(const char *format, ...)
@@ -14,13 +13,13 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 	while (*format)
 	{
-		if (!format || (format[0] == '%' && !format[1]))
-			return (-1);
-		if (format[0] == '%' && format[1] == ' ' && !format[2])
-			return (-1);
-		if (*format == '%' && *(format + 1))
+		if (*format == '%')
 		{
 			format++;
 			switch (*format)
