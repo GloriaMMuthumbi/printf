@@ -8,7 +8,7 @@
 int print_num(int n)
 {
 	int count = 0;
-	
+
 	if (n < 0)
 	{
 		_putchar('-');
