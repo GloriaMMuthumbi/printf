@@ -29,13 +29,6 @@ int _printf(const char *format, ...)
 				case '%':
 					count += _putchar('%');
 					break;
-				case 'b':
-					count += print_binary(va_arg(args, unsigned int));
-					break;
-				case 'd':
-				case 'i':
-					count += print_num(va_arg(args, int));
-					break;
 				case 's':
 					str = va_arg(args, char *);
 					if (!str)
