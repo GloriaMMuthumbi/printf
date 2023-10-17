@@ -3,12 +3,12 @@
 /**
  * print_num - prints a number
  * @n: the integer to print
- * 
  * Return: returns number of digits printed
  */
 int print_num(int n)
 {
 	int count = 0;
+
 	if (n < 0)
 	{
 		_putchar('-');
