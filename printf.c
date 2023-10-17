@@ -37,16 +37,6 @@ int _printf(const char *format, ...)
 					while (*str)
 						count += _putchar(*str++);
 					break;
-				case 'i':
-				case 'd':
-					num = va_arg(args, int);
-					if (num < 0)
-					{
-						count += _putchar('-');
-						num = -num;
-					}
-					count =+ print_number(num);
-					break;
 				default:
 					count += _putchar('%') + _putchar(*format);
 					break;
