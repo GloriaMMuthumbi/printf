@@ -30,6 +30,13 @@ int _printf(const char *format, ...)
 				case '%':
 					count += _putchar('%');
 					break;
+				case 'd':
+				case 'i':
+				{
+					int num = va_arg(args, int);
+					count += print_num(num);
+				}
+					break;
 				case 's':
 					str = va_arg(args, char *);
 					if (str == NULL)
