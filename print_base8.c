@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_base8 - prints unsigned int in base 8
- * @n - unsigned in to be printed
+ * @n: unsigned in to be printed
  * Return: returns number of characters printed
  */
 int print_base8(unsigned int n)
