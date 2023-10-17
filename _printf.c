@@ -31,7 +31,8 @@ int _printf(const char *format, ...)
 					count += print_unsigned_int(va_arg(args, unsigned int));
 					break;
 				case 'o':
-					count += print_base8(va_arg(args, unsigned int));
+				case 'b':
+					count += (*format == 'o') ? print_base8(va_arg(args, unsigned int)) : print_binary(va_arg(args, unsigned int));
 					break;
 				case 'x':
 				case 'X':
