@@ -1,65 +1,43 @@
 #include "main.h"
 #include <stddef.h>
 #include <stdarg.h>
+#include <stdio.h>
+
 /**
- * _printf - prints number of characters
- * @format: the formatted string
- *
- * Return: returns the number of characters printed
- */
+ * _printf - printing function
+ * @format: sing
+ * Return: (0)
+*/
+
 int _printf(const char *format, ...)
 {
-	int count = 0;
-	char *str;
+	int counter = 0;
+	int i;
+	char *s;
+	char c;
 	va_list args;
 
-	if (format == NULL)
-		return (-1);
-
 	va_start(args, format);
-	while (*format != '\0')
+	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		switch (*format++)
 		{
-			format++;
-			if (*format == 'r')
-				count += _putchar('r');
-			else
-			{
-				switch (*format)
-				{
-					case 'c':
-						count += _putchar(va_arg(args, int));
-						break;
-					case 's':
-						{
-							str = va_arg(args, char *);
-							if (str == NULL)
-							str = "(null)";
-							while (*str)
-							{
-								count += _putchar(*str);
-								str++;
-							}
-						}
-						break;
-					case '%':
-						count += _putchar('%');
-						break;
-					default:
-						count += _putchar('%');
-						count += _putchar(*format);
-						break;
-				}
-			}
+			case 's':
+				s = va_arg(args, char *);
+				_putchar(s);
+				break;
+			case 'i':
+				i = va_arg(args, int);
+				_putchar(i);
+				break;
+			case 'c':
+				c = (char) va_arg(args, int);
+				_putchar(c);
+				break;
 		}
-		else
-		{
-			count += _putchar(*format);
-		}
-		format++;
+		i++;
+		counter += 1;
 	}
 	va_end(args);
-
-	return (count);
+	return (counter);
 }
