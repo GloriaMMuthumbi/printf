@@ -29,6 +29,18 @@ int _printf(const char *format, ...)
 				case '%':
 					count += _putchar('%');
 					break;
+				case 'u':
+					count += print_unsigned_int(va_arg(args, unsigned int));
+					break;
+				case 'o':
+					count += print_base8(va_arg(args, unsigned int));
+					break;
+				case 'x':
+					count += print_hex(va_arg(args, unsigned int));
+					break;
+				case 'X':
+					count += print_HEX(va_arg(args, unsigned int));
+					break;
 				case 'd':
 				case 'i':
 					count += print_num(va_arg(args, int));
