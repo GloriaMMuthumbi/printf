@@ -34,6 +34,9 @@ int _printf(const char *format, ...)
 				case 'o':
 					count += print_base8(va_arg(args, unsigned int));
 					break;
+				case 'b':
+					count += print_binary(va_arg(args, unsigned int));
+					break;
 				case 'x':
 					count += print_hex(va_arg(args, unsigned int));
 					break;
