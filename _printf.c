@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stddef.h>
 /**
  * _printf - prints number of characters
  * @format: the formatted string
@@ -12,9 +13,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	if (format == NULL)
 		return (-1);
 	while (*format)
 	{
@@ -32,7 +31,8 @@ int _printf(const char *format, ...)
 					break;
 				case 'o':
 				case 'b':
-					count += (*format == 'o') ? print_base8(va_arg(args, unsigned int)) : print_binary(va_arg(args, unsigned int));
+					count += (*format == 'o') ? print_base8(va_arg(args, unsigned int))
+					: print_binary(va_arg(args, unsigned int));
 					break;
 				case 'x':
 				case 'X':

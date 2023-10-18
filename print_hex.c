@@ -2,6 +2,7 @@
 /**
  * print_hex - prints unsigned int in hexadecimal form
  * @n: unsigned int to be converted
+ * @uppercase: uppercase var
  * Return: return number of characters to be printed
  */
 int print_hex(unsigned int n, int uppercase)
@@ -9,6 +10,7 @@ int print_hex(unsigned int n, int uppercase)
 	char hex_buffer[25];
 	int count = 0, i;
 	char hex_digs[] = "0123456789ABCDEF";
+
 	if (!uppercase)
 	{
 		for (i = 10; i < 16; i++)
